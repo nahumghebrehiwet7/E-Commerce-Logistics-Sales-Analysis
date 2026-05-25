@@ -1,0 +1,21 @@
+import pandas as pd
+import numpy as np
+import matplotlib.pyplot as plt
+import seaborn as sns
+from scipy import stats
+df1 = pd.read_csv(r"C:\Users\nahum\OneDrive\Documents\order_payments_dataset.csv")
+df2 = pd.read_csv(r"C:\Users\nahum\OneDrive\Documents\order_reviews_dataset.csv")
+df3 = pd.read_csv(r"C:\Users\nahum\OneDrive\Documents\orders_dataset.csv")
+df4 = pd.read_csv(r"C:\Users\nahum\OneDrive\Documents\products_dataset.csv")
+df5 = pd.read_csv(r"C:\Users\nahum\OneDrive\Documents\sellers_dataset.csv")
+df6 = pd.read_csv(r"C:\Users\nahum\OneDrive\Documents\geolocation_dataset.csv")
+df7 = pd.read_csv(r"C:\Users\nahum\OneDrive\Documents\order_items_dataset.csv")
+df8 = pd.read_csv(r"C:\Users\nahum\OneDrive\Documents\customers_dataset.csv")
+print(df1.isnull().sum())
+print(df2.isnull().sum())
+print(df3.isnull().sum())
+print(df4.isnull().sum())
+print(df5.isnull().sum())
+print(df6.isnull().sum())
+print(df7.isnull().sum())
+print(df8.isnull().sum())
