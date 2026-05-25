@@ -1,8 +1,13 @@
+## Python code used for this project ##
+
+# import libraries used for this project 
 import pandas as pd
 import numpy as np
 import matplotlib.pyplot as plt
 import seaborn as sns
 from scipy import stats
+
+# .csv data sets 
 df1 = pd.read_csv(r"C:\Users\nahum\OneDrive\Documents\order_payments_dataset.csv")
 df2 = pd.read_csv(r"C:\Users\nahum\OneDrive\Documents\order_reviews_dataset.csv")
 df3 = pd.read_csv(r"C:\Users\nahum\OneDrive\Documents\orders_dataset.csv")
@@ -11,6 +16,8 @@ df5 = pd.read_csv(r"C:\Users\nahum\OneDrive\Documents\sellers_dataset.csv")
 df6 = pd.read_csv(r"C:\Users\nahum\OneDrive\Documents\geolocation_dataset.csv")
 df7 = pd.read_csv(r"C:\Users\nahum\OneDrive\Documents\order_items_dataset.csv")
 df8 = pd.read_csv(r"C:\Users\nahum\OneDrive\Documents\customers_dataset.csv")
+
+# Checking for issues 
 print(df1.isnull().sum())
 print(df2.isnull().sum())
 print(df3.isnull().sum())
@@ -19,3 +26,13 @@ print(df5.isnull().sum())
 print(df6.isnull().sum())
 print(df7.isnull().sum())
 print(df8.isnull().sum())
+
+# basic description of the data sets
+print(df1.info())
+print(df2.info())
+print(df3.info())
+print(df4.info())
+print(df5.info())
+print(df6.info())
+print(df7.info())
+print(df8.info())
