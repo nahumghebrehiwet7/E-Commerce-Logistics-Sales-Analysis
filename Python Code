@@ -46,3 +46,7 @@ print(df5.describe())
 print(df6.describe())
 print(df7.describe())
 print(df8.describe())
+
+# Number of customers in each state 
+state_counts = df8.groupby('customer_state').size()
+print(state_counts)
