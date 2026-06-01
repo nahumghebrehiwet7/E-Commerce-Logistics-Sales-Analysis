@@ -1,0 +1,5 @@
+# Code used in Microsoft Power BI
+
+# Display descriptive stats for review score
+import pandas as pd
+dataset = dataset['review_score'].describe().reset_index()
