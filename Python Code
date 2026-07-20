@@ -69,7 +69,15 @@ print(low10)
 test3 = df2.merge(df7, on='order_id')
 result2 = test3.groupby('product_id')['review_score'].agg(['mean', 'count', 'std']).reset_index()
 result2.columns = ['product_id', 'avg_review', 'count', 'std']
-filtered = result2[result2['count'] >= 15]
+
+# Ratings by Product Category
+test7 = df2.merge(df7, on='order_id')
+test8 = test7.merge(df4, on='product_id')
+result5 = test8.groupby('product_category_name')['review_score'].agg(['mean', 'count', 'std']).reset_index()
+result5.columns = ['product_category_name', 'avg_review', 'count', 'std']
+filter2 = result5[result5['count'] >= 150]
+high10v2 = filter2.sort_values('avg_review', ascending=False).head(15)
+print(high10v2)filtered = result2[result2['count'] >= 15]
 low10 = filtered.sort_values('avg_review', ascending=False).head(15)
 print(low10)
 
