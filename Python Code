@@ -88,3 +88,21 @@ print(high10v2)filtered = result2[result2['count'] >= 15]
 low10 = filtered.sort_values('avg_review', ascending=False).head(15)
 print(low10)
 
+# Rating by Order Delay
+review_orders = df2.merge(df3, on='order_id')
+
+review_orders['order_purchase_timestamp'] = pd.to_datetime(review_orders['order_purchase_timestamp'])
+review_orders['order_delivered_customer_date'] = pd.to_datetime(review_orders['order_delivered_customer_date'])
+review_orders['order_estimated_delivery_date'] = pd.to_datetime(review_orders['order_estimated_delivery_date'])
+
+review_orders = review_orders.dropna(subset=['order_delivered_customer_date'])
+
+review_orders['delivery_days'] = (review_orders['order_delivered_customer_date'] - review_orders['order_purchase_timestamp']).dt.days
+review_orders['delay_days'] = (review_orders['order_delivered_customer_date'] - review_orders['order_estimated_delivery_date']).dt.days
+
+bins = [0, 2, 7, 14, 21, 30, 40, 209]
+group_labels = ['0-2 Days', '2-7 Days', '7-14 Days', '14-21 Days', '21-30 Days', '30-40 Days', '40+ Days' ]
+review_orders['Delivery Group'] = pd.cut(review_orders['delivery_days'], bins=bins, labels=group_labels, include_lowest=True)
+result = review_orders.groupby('Delivery Group')['review_score'].agg(['mean', 'median', 'count', 'std']).reset_index()
+result.columns = [ 'Mean Reviews', 'Median Reviews', 'Count', 'Standard Deviation']
+print(result)
